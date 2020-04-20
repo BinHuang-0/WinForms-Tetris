@@ -9,10 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Tetris
+namespace ProjectTet
 {
     public partial class Form1 : Form
     {
+        Game game;
 
         public Form1()
         {
@@ -20,23 +21,28 @@ namespace Tetris
             scoreBox.Text = 0.ToString();
             levelBox.Text = 1.ToString();
             linesBox.Text = 0.ToString();
+            game = new Game();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void draw()
+        private void DrawBoard()
         {
             Graphics graphics = gameBoard.CreateGraphics();
+            int size = 20;
 
-            graphics.DrawRectangle(new Pen(Color.Red), new Rectangle(100,100,2,2));
+            for(int i = 0; i < 20; i++)
+            {
+                for(int k = 0; k < 10; k++)
+                {
+                    graphics.DrawRectangle(new Pen(Color.Gray), new Rectangle(k * size,i * size,size,size));
+                    Debug.WriteLine(game.Board[0, 0]);
+//                    if (game.Board[i, k] != 0)
+//                        graphics.FillRectangle(new SolidBrush(Color.Red), new Rectangle(k * size, i * size, size, size));
+                }
+            }
         }
 
         private void gameBoard_Click(object sender, EventArgs e)
         {
-            draw();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -47,6 +53,12 @@ namespace Tetris
         private void nextBox_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void playButton_Click(object sender, EventArgs e)
+        {
+            playButton.Hide();
+            DrawBoard();
         }
     }
 }

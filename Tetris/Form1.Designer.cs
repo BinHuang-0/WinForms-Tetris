@@ -1,4 +1,4 @@
-﻿namespace Tetris
+﻿namespace ProjectTet
 {
     partial class Form1
     {
@@ -40,6 +40,7 @@
             this.levelBox = new System.Windows.Forms.TextBox();
             this.linesLabel = new System.Windows.Forms.Label();
             this.linesBox = new System.Windows.Forms.TextBox();
+            this.playButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gameBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.holdBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nextBox)).BeginInit();
@@ -48,9 +49,9 @@
             // gameBoard
             // 
             this.gameBoard.BackColor = System.Drawing.Color.White;
-            this.gameBoard.Location = new System.Drawing.Point(116, 10);
+            this.gameBoard.Location = new System.Drawing.Point(103, 8);
             this.gameBoard.Name = "gameBoard";
-            this.gameBoard.Size = new System.Drawing.Size(250, 435);
+            this.gameBoard.Size = new System.Drawing.Size(270, 495);
             this.gameBoard.TabIndex = 2;
             this.gameBoard.TabStop = false;
             this.gameBoard.Click += new System.EventHandler(this.gameBoard_Click);
@@ -67,7 +68,7 @@
             // nextLabel
             // 
             this.nextLabel.AutoSize = true;
-            this.nextLabel.Location = new System.Drawing.Point(385, 20);
+            this.nextLabel.Location = new System.Drawing.Point(405, 20);
             this.nextLabel.Name = "nextLabel";
             this.nextLabel.Size = new System.Drawing.Size(45, 17);
             this.nextLabel.TabIndex = 4;
@@ -86,7 +87,7 @@
             // nextBox
             // 
             this.nextBox.BackColor = System.Drawing.Color.White;
-            this.nextBox.Location = new System.Drawing.Point(388, 40);
+            this.nextBox.Location = new System.Drawing.Point(408, 40);
             this.nextBox.Name = "nextBox";
             this.nextBox.Size = new System.Drawing.Size(50, 50);
             this.nextBox.TabIndex = 6;
@@ -105,7 +106,7 @@
             // scoreLabel
             // 
             this.scoreLabel.AutoSize = true;
-            this.scoreLabel.Location = new System.Drawing.Point(385, 119);
+            this.scoreLabel.Location = new System.Drawing.Point(405, 119);
             this.scoreLabel.Name = "scoreLabel";
             this.scoreLabel.Size = new System.Drawing.Size(56, 17);
             this.scoreLabel.TabIndex = 8;
@@ -113,7 +114,7 @@
             // 
             // scoreBox
             // 
-            this.scoreBox.Location = new System.Drawing.Point(388, 139);
+            this.scoreBox.Location = new System.Drawing.Point(408, 139);
             this.scoreBox.Name = "scoreBox";
             this.scoreBox.ReadOnly = true;
             this.scoreBox.Size = new System.Drawing.Size(67, 22);
@@ -123,7 +124,7 @@
             // levelLabel
             // 
             this.levelLabel.AutoSize = true;
-            this.levelLabel.Location = new System.Drawing.Point(385, 183);
+            this.levelLabel.Location = new System.Drawing.Point(405, 179);
             this.levelLabel.Name = "levelLabel";
             this.levelLabel.Size = new System.Drawing.Size(51, 17);
             this.levelLabel.TabIndex = 10;
@@ -131,7 +132,7 @@
             // 
             // levelBox
             // 
-            this.levelBox.Location = new System.Drawing.Point(388, 207);
+            this.levelBox.Location = new System.Drawing.Point(408, 199);
             this.levelBox.Name = "levelBox";
             this.levelBox.ReadOnly = true;
             this.levelBox.Size = new System.Drawing.Size(66, 22);
@@ -141,7 +142,7 @@
             // linesLabel
             // 
             this.linesLabel.AutoSize = true;
-            this.linesLabel.Location = new System.Drawing.Point(385, 253);
+            this.linesLabel.Location = new System.Drawing.Point(405, 237);
             this.linesLabel.Name = "linesLabel";
             this.linesLabel.Size = new System.Drawing.Size(47, 17);
             this.linesLabel.TabIndex = 12;
@@ -149,18 +150,29 @@
             // 
             // linesBox
             // 
-            this.linesBox.Location = new System.Drawing.Point(388, 273);
+            this.linesBox.Location = new System.Drawing.Point(407, 257);
             this.linesBox.Name = "linesBox";
             this.linesBox.ReadOnly = true;
             this.linesBox.Size = new System.Drawing.Size(67, 22);
             this.linesBox.TabIndex = 13;
             this.linesBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // playButton
+            // 
+            this.playButton.Location = new System.Drawing.Point(400, 298);
+            this.playButton.Name = "playButton";
+            this.playButton.Size = new System.Drawing.Size(75, 23);
+            this.playButton.TabIndex = 14;
+            this.playButton.Text = "PLAY";
+            this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.playButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 453);
+            this.ClientSize = new System.Drawing.Size(502, 515);
+            this.Controls.Add(this.playButton);
             this.Controls.Add(this.linesBox);
             this.Controls.Add(this.linesLabel);
             this.Controls.Add(this.levelBox);
@@ -174,7 +186,6 @@
             this.Controls.Add(this.holdLabel);
             this.Controls.Add(this.gameBoard);
             this.Name = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gameBoard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.holdBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nextBox)).EndInit();
@@ -196,6 +207,7 @@
         private System.Windows.Forms.TextBox levelBox;
         private System.Windows.Forms.Label linesLabel;
         private System.Windows.Forms.TextBox linesBox;
+        private System.Windows.Forms.Button playButton;
     }
 }
 
