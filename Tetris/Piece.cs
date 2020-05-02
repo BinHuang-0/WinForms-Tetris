@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ public abstract class Piece {
     get;
     set;
   }
-  public virtual int PieceValue { get; }
+  public virtual int PieceValue { get; set; }
 
   // check bottom
   public abstract bool IsBottom(int[, ] board);
@@ -34,12 +35,11 @@ public abstract class Piece {
   public void MoveDown() { YPosition++; }
 
   // put piece onto board
-  // need to remove previous piece before placing
   public void WritePiece(int[, ] board) {
     for (int i = 0; i < 4; i++) {
       for (int k = 0; k < 4; k++) {
-        if (YPosition + i < 20 && board[YPosition + i, XPosition + k] == 0) {
-          board[YPosition + i, XPosition + k] = Shape[i, k];
+        if (YPosition + i < 20 && board[YPosition + i, XPosition + k] == 0 && Shape[i,k] != 0) {
+          board[YPosition + i, XPosition + k] = PieceValue;
         }
       }
     }

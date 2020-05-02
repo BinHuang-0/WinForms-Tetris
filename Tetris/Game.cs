@@ -23,8 +23,8 @@ class Game {
   }
   public Game() {
     _Board = new int[20, 10];
-    _Gamespeed = 1;
-    _curPiece = new IPiece();
+    _Gamespeed = 100;
+      _NewPiece();
     //            for(int i = 0; i < 4; i++)
     //            {
     //                for(int k = 0; k < 4; k++)
@@ -36,17 +36,38 @@ class Game {
   }
 
   public void gameTick() {
-    _curPiece.WritePiece(Board);
+    _curPiece.RemovePiece(_Board);
+//    _curPiece.WritePiece(Board);
     if (!_curPiece.IsBottom(_Board)) {
-      _curPiece.MoveDown();
-    } else
-      this._NewPiece();
+        _curPiece.MoveDown();
+        _curPiece.WritePiece(Board);
+    } else {
+        _curPiece.PieceValue -= 7;
+        _curPiece.WritePiece(Board);
+        printBoard();
+        this._NewPiece();
+      }
+
   }
 
-  private void _NewPiece() { _curPiece = new IPiece(); }
+    private void _NewPiece()
+    {
+      _curPiece = new IPiece();
+      _curPiece.PieceValue += 7;
+    }
 
   public void RemovePiece() { _curPiece.RemovePiece(_Board); }
 
   public bool gameCheckBottom() { return _curPiece.IsBottom(_Board); }
+
+  private void printBoard() {
+    for(int i = 0; i < 20; i++) {
+      for(int k = 0; k < 10; k++) {
+          Debug.Write(Board[i, k]);
+      }
+        Debug.WriteLine("");
+    }
+    Debug.WriteLine("");
+  }
 }
 }

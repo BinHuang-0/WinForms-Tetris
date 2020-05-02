@@ -42,8 +42,8 @@ public partial class Form1 : Form {
                                new Rectangle(k * size, i * size, size, size));
       }
     }
-    if (!game.gameCheckBottom())
-      game.RemovePiece();
+//    if (!game.gameCheckBottom())
+//      game.RemovePiece();
   }
 
   private void gameBoard_Click(object sender, EventArgs e) {}

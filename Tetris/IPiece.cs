@@ -30,9 +30,7 @@ class IPiece : Piece {
     }
   }
 
-  public override int PieceValue {
-    get { return 1; }
-  }
+  public override int PieceValue { get; set; }
   public IPiece() {
     // set inital rotation state
     _Shape =
@@ -40,16 +38,17 @@ class IPiece : Piece {
     // set position to middle
     _XPosition = 3;
     _YPosition = 0;
+      PieceValue = 1;
   }
 
   public override bool IsBottom(int[, ] board) {
-    if (_YPosition == 18)
+    if (_YPosition == 17)
       return true;
-    //            for(int i = 0; i < 4; i++)
-    //            {
-    //                if (board[_YPosition + 1, (_XPosition - 2) + i] != 0)
-    //                    return true;
-    //            }
+    for(int i = 0; i < 4; i++)
+    {
+        if (board[_YPosition + 3, _XPosition + i] != 0)
+            return true;
+    }
     return false;
   }
 
