@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -45,7 +46,27 @@ namespace ProjectTet
         public void gameTick()
         {
             _curPiece.WritePiece(Board);
-            _curPiece.MoveDown();
+            if (!_curPiece.IsBottom(_Board))
+            {
+                _curPiece.MoveDown();
+            }
+            else
+                this._NewPiece();
+        }
+
+        private void _NewPiece()
+        {
+            _curPiece = new IPiece();
+        }
+
+        public void RemovePiece()
+        {
+            _curPiece.RemovePiece(_Board);
+        }
+
+        public bool gameCheckBottom()
+        {
+            return _curPiece.IsBottom(_Board);
         }
 
     }

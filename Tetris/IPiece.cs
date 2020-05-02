@@ -57,13 +57,13 @@ namespace ProjectTet
 
         public override bool IsBottom(int[,] board)
         {
-            if (_YPosition == 19)
+            if (_YPosition == 18)
                 return true;
-            for(int i = 0; i < 4; i++)
-            {
-                if (board[_YPosition + 1, (_XPosition - 2) + i] != 0)
-                    return true;
-            }
+//            for(int i = 0; i < 4; i++)
+//            {
+//                if (board[_YPosition + 1, (_XPosition - 2) + i] != 0)
+//                    return true;
+//            }
             return false;
         }
 

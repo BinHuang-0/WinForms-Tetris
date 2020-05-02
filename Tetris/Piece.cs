@@ -46,12 +46,26 @@ namespace ProjectTet
             {
                 for(int k = 0; k < 4; k++)
                 {
-                    if(board[YPosition + i, XPosition + k] == 0)
+                    if(YPosition + i < 20 && board[YPosition + i, XPosition + k] == 0)
                     {
                         board[YPosition + i, XPosition + k] = Shape[i, k];
                     }
                 }
             }           
+        }
+
+        public void RemovePiece(int[,] board)
+        {
+            for(int i = 0; i < 4; i++)
+            {
+                for(int k = 0; k < 4; k++)
+                {
+                    if(YPosition + i < 20 && board[YPosition + i, XPosition + k] == PieceValue)
+                    {
+                        board[YPosition + i, XPosition + k] = 0;
+                    }
+                }
+            }       
         }
     }
 }

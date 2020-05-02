@@ -15,6 +15,8 @@ namespace ProjectTet
     {
         Game game;
         Timer gameTimer;
+        Graphics graphics;
+        int size;
 
         public Form1()
         {
@@ -23,22 +25,28 @@ namespace ProjectTet
             levelBox.Text = 1.ToString();
             linesBox.Text = 0.ToString();
             game = new Game();
+            graphics = gameBoard.CreateGraphics();
+            size = 20;
         }
 
         private void DrawBoard()
         {
-            Graphics graphics = gameBoard.CreateGraphics();
-            int size = 20;
+//            Graphics graphics = gameBoard.CreateGraphics();
+//            int size = 20;
 
             for(int i = 0; i < 20; i++)
             {
                 for(int k = 0; k < 10; k++)
                 {
-                    graphics.DrawRectangle(new Pen(Color.Gray), new Rectangle(k * size,i * size,size,size));
                     if (game.Board[i, k] != 0)
                         graphics.FillRectangle(new SolidBrush(Color.Red), new Rectangle(k * size, i * size, size, size));
+                    else
+                        graphics.FillRectangle(new SolidBrush(Color.White), new Rectangle(k * size, i * size, size, size));
+                    graphics.DrawRectangle(new Pen(Color.Gray), new Rectangle(k * size,i * size,size,size));
                 }
             }
+            if(!game.gameCheckBottom())
+                game.RemovePiece();
         }
 
         private void gameBoard_Click(object sender, EventArgs e)
