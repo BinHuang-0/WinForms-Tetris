@@ -13,6 +13,11 @@ namespace ProjectTet
         private int _XPosition;
         private int _YPosition;
 
+        public override int[,] Shape {
+            get {
+                return _Shape;
+            }
+        }
         public override int XPosition {
             get {
                 return _XPosition;
@@ -50,13 +55,13 @@ namespace ProjectTet
             _YPosition = 0;
         }
 
-        public override bool IsBottom(bool[,] board)
+        public override bool IsBottom(int[,] board)
         {
             if (_YPosition == 19)
                 return true;
             for(int i = 0; i < 4; i++)
             {
-                if (board[_YPosition + 1, (_XPosition - 2) + i])
+                if (board[_YPosition + 1, (_XPosition - 2) + i] != 0)
                     return true;
             }
             return false;
@@ -68,12 +73,12 @@ namespace ProjectTet
         }
 
         //see if i can just rotate the array
-        public override void RotateLeft()
+        public override void RotateRight()
         {
             throw new NotImplementedException();
         }
 
-        public override void RotateRight()
+        public override void RotateLeft()
         {
             throw new NotImplementedException();
         }

@@ -14,6 +14,7 @@ namespace ProjectTet
     public partial class Form1 : Form
     {
         Game game;
+        Timer gameTimer;
 
         public Form1()
         {
@@ -34,9 +35,8 @@ namespace ProjectTet
                 for(int k = 0; k < 10; k++)
                 {
                     graphics.DrawRectangle(new Pen(Color.Gray), new Rectangle(k * size,i * size,size,size));
-                    Debug.WriteLine(game.Board[0, 0]);
-//                    if (game.Board[i, k] != 0)
-//                        graphics.FillRectangle(new SolidBrush(Color.Red), new Rectangle(k * size, i * size, size, size));
+                    if (game.Board[i, k] != 0)
+                        graphics.FillRectangle(new SolidBrush(Color.Red), new Rectangle(k * size, i * size, size, size));
                 }
             }
         }
@@ -58,7 +58,21 @@ namespace ProjectTet
         private void playButton_Click(object sender, EventArgs e)
         {
             playButton.Hide();
+            InitTimer();
+        }
+
+        private void InitTimer()
+        {
+            gameTimer = new Timer();
+            gameTimer.Tick += new EventHandler(gameTick);
+            gameTimer.Interval = 1000 / game.Gamespeed;
+            gameTimer.Start();
+        }
+
+        private void gameTick(object sender, EventArgs e)
+        {
             DrawBoard();
+            game.gameTick();
         }
     }
 }
