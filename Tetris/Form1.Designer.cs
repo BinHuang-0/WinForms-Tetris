@@ -37,6 +37,7 @@ partial class Form1 {
             this.linesLabel = new System.Windows.Forms.Label();
             this.linesBox = new System.Windows.Forms.TextBox();
             this.playButton = new System.Windows.Forms.Button();
+            this.InstructionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gameBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.holdBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nextBox)).BeginInit();
@@ -173,11 +174,22 @@ partial class Form1 {
             this.playButton.UseVisualStyleBackColor = true;
             this.playButton.Click += new System.EventHandler(this.playButton_Click);
             // 
+            // InstructionLabel
+            // 
+            this.InstructionLabel.AutoSize = true;
+            this.InstructionLabel.Location = new System.Drawing.Point(437, 429);
+            this.InstructionLabel.Name = "InstructionLabel";
+            this.InstructionLabel.Size = new System.Drawing.Size(116, 180);
+            this.InstructionLabel.TabIndex = 15;
+            this.InstructionLabel.Text = "a = move left\r\ns = soft drop\r\nd = move right\r\n\r\nleft arrow = \r\nrotate left\r\n\r\nrig" +
+    "ht arrow = \r\nrotate right\r\n";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 644);
+            this.Controls.Add(this.InstructionLabel);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.linesBox);
             this.Controls.Add(this.linesLabel);
@@ -215,5 +227,6 @@ partial class Form1 {
   private System.Windows.Forms.Label linesLabel;
   private System.Windows.Forms.TextBox linesBox;
   private System.Windows.Forms.Button playButton;
-}
+        private System.Windows.Forms.Label InstructionLabel;
+    }
 }
