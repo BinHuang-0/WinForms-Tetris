@@ -37,6 +37,30 @@ namespace ProjectTet {
                 _curPiece.PieceValue -= 7;
                 _curPiece.WritePiece(Board);
                 this._NewPiece();
+                _LineClear();
+            }
+        }
+
+        private void _LineClear() {
+            bool clear;
+            for(int i = 0; i < 20; i++) {
+                clear = true;
+                for(int k = 0; k < 10; k++) {
+                    if (Board[i, k] == 0)
+                        clear = false;
+                }
+                if(clear) {
+                    //add points
+                    //move everything down
+                    for(int j = i; j > 0; j--) {
+                        for(int k = 0; k < 10; k++) {
+                            Board[j, k] = Board[j - 1, k];
+                        }
+                    }
+                    for(int k = 0; k < 10; k++) {
+                        Board[0, k] = 0;
+                    }
+                }
             }
         }
 
