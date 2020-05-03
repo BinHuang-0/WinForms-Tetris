@@ -69,6 +69,7 @@ namespace ProjectTet {
         private void gameTick(object sender, EventArgs e) {
             DrawBoard();
             game.gameTick();
+            scoreBox.Text = game.Score.ToString();
         }
 
         private void GameBoard_KeyPress(object sender, KeyEventArgs e) {

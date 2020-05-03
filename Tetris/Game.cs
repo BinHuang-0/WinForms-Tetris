@@ -12,6 +12,7 @@ namespace ProjectTet {
         //(y,x)
         private int[, ] _Board;
         private int _Gamespeed;
+        private int _Score;
         private Piece _curPiece;
 
         public int[, ] Board {
@@ -20,6 +21,12 @@ namespace ProjectTet {
         public int Gamespeed {
             get { return _Gamespeed; }
             set { _Gamespeed = value; }
+        }
+
+        public int Score {
+            get {
+                return _Score;
+            }
         }
 
         public Game() {
@@ -50,7 +57,8 @@ namespace ProjectTet {
                         clear = false;
                 }
                 if(clear) {
-                    //add points
+                    //add score
+                    _Score += 10 * _Gamespeed;
                     //move everything down
                     for(int j = i; j > 0; j--) {
                         for(int k = 0; k < 10; k++) {
@@ -66,7 +74,7 @@ namespace ProjectTet {
 
         private void _NewPiece()
         {
-            _curPiece = new IPiece();
+            _curPiece = new OPiece();
             _curPiece.PieceValue += 7;
         }
 
