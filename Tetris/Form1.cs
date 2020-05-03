@@ -16,15 +16,16 @@ public partial class Form1 : Form {
   Graphics graphics;
   int size;
 
-  public Form1() {
-    InitializeComponent();
-    scoreBox.Text = 0.ToString();
-    levelBox.Text = 1.ToString();
-    linesBox.Text = 0.ToString();
-    game = new Game();
-    graphics = gameBoard.CreateGraphics();
-    size = 20;
-  }
+        public Form1() {
+            InitializeComponent();
+            scoreBox.Text = 0.ToString();
+            levelBox.Text = 1.ToString();
+            linesBox.Text = 0.ToString();
+            game = new Game();
+            graphics = gameBoard.CreateGraphics();
+            size = 20;
+            gameBoard.KeyDown += new KeyEventHandler(GameBoard_KeyPress);
+        }
 
   private void DrawBoard() {
     //            Graphics graphics = gameBoard.CreateGraphics();
@@ -52,10 +53,11 @@ public partial class Form1 : Form {
 
   private void nextBox_Click(object sender, EventArgs e) {}
 
-  private void playButton_Click(object sender, EventArgs e) {
-    playButton.Hide();
-    InitTimer();
-  }
+        private void playButton_Click(object sender, EventArgs e) {
+            playButton.Hide();
+            InitTimer();
+            gameBoard.Select();
+        }
 
   private void InitTimer() {
     gameTimer = new Timer();
@@ -68,5 +70,10 @@ public partial class Form1 : Form {
     DrawBoard();
     game.gameTick();
   }
+
+        private void GameBoard_KeyPress(object sender, KeyEventArgs e) {
+            game.ButtonPress(sender, e);
+            gameTick(sender, e);
+        }
 }
 }

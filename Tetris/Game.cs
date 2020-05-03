@@ -25,14 +25,6 @@ class Game {
     _Board = new int[20, 10];
     _Gamespeed = 100;
       _NewPiece();
-    //            for(int i = 0; i < 4; i++)
-    //            {
-    //                for(int k = 0; k < 4; k++)
-    //                {
-    //                    //_Board[i + piece.YPosition, k + piece.XPosition] =
-    //                    piece.Shape[i, k] * 2;
-    //                }
-    //            }
   }
 
   public void gameTick() {
@@ -44,7 +36,7 @@ class Game {
     } else {
         _curPiece.PieceValue -= 7;
         _curPiece.WritePiece(Board);
-        printBoard();
+//        printBoard();
         this._NewPiece();
       }
 
@@ -56,9 +48,9 @@ class Game {
       _curPiece.PieceValue += 7;
     }
 
-  public void RemovePiece() { _curPiece.RemovePiece(_Board); }
-
-  public bool gameCheckBottom() { return _curPiece.IsBottom(_Board); }
+//  public void RemovePiece() { _curPiece.RemovePiece(_Board); }
+//
+//  public bool gameCheckBottom() { return _curPiece.IsBottom(_Board); }
 
   private void printBoard() {
     for(int i = 0; i < 20; i++) {
@@ -69,5 +61,20 @@ class Game {
     }
     Debug.WriteLine("");
   }
-}
+        public void ButtonPress(object sender, KeyEventArgs e) {
+            switch(e.KeyData) {
+                case Keys.Left:
+                    if(_curPiece.CheckWall(0,Board))
+                        _curPiece.MoveLeft();
+                    break;
+                case Keys.Right:
+                    if(_curPiece.CheckWall(1,Board))
+                        _curPiece.MoveRight();
+                    break;
+                case Keys.Down:
+                    _curPiece.MoveDown();
+                    break;
+            }
+        }
+    }
 }

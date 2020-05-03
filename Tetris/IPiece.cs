@@ -17,7 +17,8 @@ class IPiece : Piece {
   public override int XPosition {
     get { return _XPosition; }
     set {
-      if (value >= 0 && value < 10)
+        // use private function CheckWall to check if x is allowed
+      if (value >= 0 && value < 7)
         _XPosition = value;
     }
   }
@@ -52,9 +53,25 @@ class IPiece : Piece {
     return false;
   }
 
-  public override bool CheckWall(int pos) {
-    throw new NotImplementedException();
-  }
+        public override bool CheckWall(int direction, int[,] board) {
+            //left
+            if (direction == 0) {
+                //horizontal
+                if(XPosition == 0 || board[YPosition, XPosition - 1] != 0) {
+                    return false;
+                }
+                //vertical
+            }
+            //right
+            else{
+                //horizontal
+                if(XPosition == 6 || board[YPosition, XPosition + 4] != 0) {
+                    return false;
+                }
+                //vertical
+            }
+            return true;
+        }
 
   // see if i can just rotate the array
   public override void RotateRight() { throw new NotImplementedException(); }
