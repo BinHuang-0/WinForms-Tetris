@@ -126,7 +126,11 @@ namespace ProjectTet {
             if(RotationValue == 1) {
                 _Shape = 
                     new int[, ]{{0, 0, 0, 0}, {0, 0, 0, 0}, {1, 1, 1, 1}, {0, 0, 0, 0}};
-                while (XPosition > 6)
+                if (XPosition == 9)
+                    MoveLeft();
+                if (XPosition == 8)
+                    MoveLeft();
+                if (XPosition == 7)
                     MoveLeft();
             }
             //change to vertical
