@@ -38,7 +38,7 @@ namespace ProjectTet {
 
         public Game() {
             _Board = new int[20, 10];
-            _Gamespeed = 50;
+            _Gamespeed = 30;
             _NewPiece();
         }
 
@@ -91,7 +91,7 @@ namespace ProjectTet {
 
         private void _NewPiece()
         {
-            _curPiece = new OPiece();
+            _curPiece = new TPiece();
             _curPiece.PieceValue += 8;
         }
 
