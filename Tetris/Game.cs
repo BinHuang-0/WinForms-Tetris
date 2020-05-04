@@ -14,6 +14,7 @@ namespace ProjectTet {
         private int _Gamespeed;
         private int _Score;
         private Piece _curPiece;
+        private int _Lines;
 
         public int[, ] Board {
             get { return _Board; }
@@ -28,6 +29,12 @@ namespace ProjectTet {
                 return _Score;
             }
         }
+        public int Lines {
+            get{
+                return _Lines;
+            }
+        }
+        public bool IsOver{ get; set; }
 
         public Game() {
             _Board = new int[20, 10];
@@ -41,11 +48,20 @@ namespace ProjectTet {
                 _curPiece.MoveDown();
                 _curPiece.WritePiece(Board);
             } else {
-                _curPiece.PieceValue -= 7;
+                _curPiece.PieceValue -= 8;
                 _curPiece.WritePiece(Board);
-                this._NewPiece();
                 _LineClear();
+                this.IsOver = _IsLose();
+                this._NewPiece();
             }
+        }
+
+        private bool _IsLose() {
+            for(int i = 0; i < 10; i++) {
+                if (Board[2, i] != 0)
+                    return true;
+            }
+            return false;
         }
 
         private void _LineClear() {
@@ -59,6 +75,7 @@ namespace ProjectTet {
                 if(clear) {
                     //add score
                     _Score += 10 * _Gamespeed;
+                    _Lines++;
                     //move everything down
                     for(int j = i; j > 0; j--) {
                         for(int k = 0; k < 10; k++) {
@@ -75,7 +92,7 @@ namespace ProjectTet {
         private void _NewPiece()
         {
             _curPiece = new OPiece();
-            _curPiece.PieceValue += 7;
+            _curPiece.PieceValue += 8;
         }
 
 //  public void RemovePiece() { _curPiece.RemovePiece(_Board); }

@@ -31,21 +31,29 @@ namespace ProjectTet {
         //            Graphics graphics = gameBoard.CreateGraphics();
         //            int size = 20;
 
-        for (int i = 0; i < 20; i++) {
-          for (int k = 0; k < 10; k++) {
-            if (game.Board[i, k] != 0)
-              graphics.FillRectangle(new SolidBrush(Color.Red),
+            for (int i = 0; i < 20; i++) {
+                for (int k = 0; k < 10; k++) {
+                    switch(game.Board[i,k] % 8) {
+                        case 0:
+                            graphics.FillRectangle(new SolidBrush(Color.White),
                                      new Rectangle(k * size, i * size, size, size));
-            else
-              graphics.FillRectangle(new SolidBrush(Color.White),
+                            break;
+                        case 1:
+                            graphics.FillRectangle(new SolidBrush(Color.Aquamarine),
                                      new Rectangle(k * size, i * size, size, size));
+                            break;
+                        case 2:
+                            graphics.FillRectangle(new SolidBrush(Color.Gold),
+                                     new Rectangle(k * size, i * size, size, size));
+                            break;
+                    }
             graphics.DrawRectangle(new Pen(Color.Gray),
                                    new Rectangle(k * size, i * size, size, size));
-          }
-        }
+                }
+            }
     //    if (!game.gameCheckBottom())
     //      game.RemovePiece();
-      }
+        }
 
         private void gameBoard_Click(object sender, EventArgs e) {}
 
@@ -57,6 +65,8 @@ namespace ProjectTet {
             playButton.Hide();
             InitTimer();
             gameBoard.Select();
+            GameOverLabel.Hide();
+            game = new Game();
         }
 
         private void InitTimer() {
@@ -70,6 +80,12 @@ namespace ProjectTet {
             DrawBoard();
             game.gameTick();
             scoreBox.Text = game.Score.ToString();
+            linesBox.Text = game.Lines.ToString();
+            if(game.IsOver) {
+                gameTimer.Stop();
+                playButton.Show();
+                GameOverLabel.Show();
+            }
         }
 
         private void GameBoard_KeyPress(object sender, KeyEventArgs e) {

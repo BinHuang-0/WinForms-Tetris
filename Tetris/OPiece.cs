@@ -67,7 +67,7 @@ namespace ProjectTet
         {
             if (YPosition == 18)
                 return true;
-            if (board[YPosition + 1, XPosition] != 0 || board[YPosition + 1, XPosition + 1] != 0)
+            if (board[YPosition + 2, XPosition] != 0 || board[YPosition + 2, XPosition + 1] != 0)
                 return true;
             return false;
         }
