@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="IPiece.cs" />
+    <Compile Include="JPiece.cs" />
     <Compile Include="LPiece.cs" />
     <Compile Include="OPiece.cs" />
     <Compile Include="Piece.cs" />
