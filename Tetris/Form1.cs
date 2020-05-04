@@ -58,6 +58,10 @@ namespace ProjectTet {
                             graphics.FillRectangle(new SolidBrush(Color.LimeGreen),
                                      new Rectangle(k * size, i * size, size, size));
                             break;
+                        case 6:
+                            graphics.FillRectangle(new SolidBrush(Color.Blue),
+                                     new Rectangle(k * size, i * size, size, size)); ;
+                            break;
                     }
             graphics.DrawRectangle(new Pen(Color.Gray),
                                    new Rectangle(k * size, i * size, size, size));
