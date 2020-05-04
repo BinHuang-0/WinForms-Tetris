@@ -15,6 +15,7 @@ namespace ProjectTet {
         private int _Score;
         private Piece _curPiece;
         private int _Lines;
+        private Random _Random;
 
         public int[, ] Board {
             get { return _Board; }
@@ -37,8 +38,9 @@ namespace ProjectTet {
         public bool IsOver{ get; set; }
 
         public Game() {
+            _Random = new Random();
             _Board = new int[20, 10];
-            _Gamespeed = 30;
+            _Gamespeed = 20;
             _NewPiece();
         }
 
@@ -91,7 +93,29 @@ namespace ProjectTet {
 
         private void _NewPiece()
         {
-            _curPiece = new TPiece();
+            switch(_Random.Next(1,8)) {
+                case 1:
+                    _curPiece = new IPiece();
+                    break;
+                case 2:
+                    _curPiece = new OPiece();
+                    break;
+                case 3:
+                    _curPiece = new TPiece();
+                    break;
+                case 4:
+                    _curPiece = new ZPiece();
+                    break;
+                case 5:
+                    _curPiece = new SPiece();
+                    break;
+                case 6:
+                    _curPiece = new LPiece();
+                    break;
+                case 7:
+                    _curPiece = new JPiece();
+                    break;
+            }
             _curPiece.PieceValue += 8;
         }
 
