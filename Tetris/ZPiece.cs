@@ -24,11 +24,11 @@ namespace ProjectTet
             }
             set {
                 if(RotationValue % 2 == 1) {
-                    if (value >= 0 && value < 7)
+                    if (value >= 0 && value < 8)
                         _XPosition = value;
                 }
                 else {
-                    if (value >= 0 && value < 8)
+                    if (value >= 0 && value < 9)
                         _XPosition = value;
                 }
             }
@@ -47,7 +47,7 @@ namespace ProjectTet
                     }
                 }
                 else {
-                    if(value >= 0 && value < 17) {
+                    if(value >= 0 && value < 18) {
                         _YPosition = value;
                     }
                 }
@@ -67,14 +67,38 @@ namespace ProjectTet
 
         public override bool CheckWall(int direction, int[,] board)
         {
-            throw new NotImplementedException();
+            if(direction == 0) {
+                switch(RotationValue) {
+                    case 1:
+                        if (XPosition == 0 || board[YPosition, XPosition - 1] != 0 || board[YPosition + 1, XPosition] != 0)
+                            return false;
+                        break;
+                    case 2:
+                        if (XPosition == 0 || board[YPosition, XPosition] != 0 || board[YPosition + 1, XPosition - 1] != 0|| board[YPosition + 2, XPosition - 1] != 0)
+                            return false;
+                        break;
+                }
+            }
+            else {
+                switch(RotationValue) {
+                    case 1:
+                        if (XPosition == 7 || board[YPosition, XPosition + 2] != 0 || board[YPosition + 1, XPosition + 3] != 0)
+                            return false;
+                        break;
+                    case 2:
+                        if (XPosition == 8 || board[YPosition, XPosition + 2] != 0 || board[YPosition + 1, XPosition + 2] != 0|| board[YPosition + 2, XPosition + 1] != 0)
+                            return false;
+                        break;
+                }
+            }
+            return true;
         }
 
         public override bool IsBottom(int[,] board)
         {
             if (RotationValue == 1 && YPosition == 18)
                 return true;
-            if (RotationValue == 0 && YPosition == 17)
+            if (RotationValue == 2 && YPosition == 17)
                 return true;
 
             switch(RotationValue) {
@@ -92,11 +116,24 @@ namespace ProjectTet
 
         public override void RotateLeft()
         {
-            throw new NotImplementedException();
+            Rotate();
         }
         public override void RotateRight()
         {
-            throw new NotImplementedException();
+            Rotate();
+        }
+
+        private void Rotate() {
+            RotationValue = RotationValue == 1 ? 2 : 1;         
+
+            if(RotationValue == 1) {
+                _Shape =
+                    new int[, ]{{1, 1, 0, 0}, {0, 1, 1, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
+            }
+            else {
+                _Shape =
+                    new int[, ]{{0, 1, 0, 0}, {1, 1, 0, 0}, {1, 0, 0, 0}, {0, 0, 0, 0}};
+            }
         }
     }
 }
