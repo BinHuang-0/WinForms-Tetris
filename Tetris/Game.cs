@@ -91,7 +91,7 @@ namespace ProjectTet {
 
         private void _NewPiece()
         {
-            _curPiece = new ZPiece();
+            _curPiece = new SPiece();
             _curPiece.PieceValue += 8;
         }
 

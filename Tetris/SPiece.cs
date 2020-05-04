@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectTet
 {
-    class ZPiece : Piece
+    class SPiece : Piece
     {
         private int[,] _Shape;
         private int _XPosition;
@@ -54,15 +54,15 @@ namespace ProjectTet
             }
         }
 
-        public ZPiece() {
+        public SPiece() {
             // set inital rotation state
             RotationValue = 1;
             _Shape =
-                new int[, ]{{1, 1, 0, 0}, {0, 1, 1, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
+                new int[, ]{{0, 1, 1, 0}, {1, 1, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
             // set position to middle
             _XPosition = 3;
             _YPosition = 1;
-            PieceValue = 4;
+            PieceValue = 5;
         }
 
         public override bool CheckWall(int direction, int[,] board)
@@ -70,11 +70,11 @@ namespace ProjectTet
             if(direction == 0) {
                 switch(RotationValue) {
                     case 1:
-                        if (XPosition == 0 || board[YPosition, XPosition - 1] != 0 || board[YPosition + 1, XPosition] != 0)
+                        if (XPosition == 0 || board[YPosition, XPosition] != 0 || board[YPosition + 1, XPosition - 1] != 0)
                             return false;
                         break;
                     case 2:
-                        if (XPosition == 0 || board[YPosition, XPosition] != 0 || board[YPosition + 1, XPosition - 1] != 0|| board[YPosition + 2, XPosition - 1] != 0)
+                        if (XPosition == 0 || board[YPosition, XPosition - 1] != 0 || board[YPosition + 1, XPosition - 1] != 0|| board[YPosition + 2, XPosition] != 0)
                             return false;
                         break;
                 }
@@ -82,11 +82,11 @@ namespace ProjectTet
             else {
                 switch(RotationValue) {
                     case 1:
-                        if (XPosition == 7 || board[YPosition, XPosition + 2] != 0 || board[YPosition + 1, XPosition + 3] != 0)
+                        if (XPosition == 7 || board[YPosition, XPosition + 3] != 0 || board[YPosition + 1, XPosition + 2] != 0)
                             return false;
                         break;
                     case 2:
-                        if (XPosition == 8 || board[YPosition, XPosition + 2] != 0 || board[YPosition + 1, XPosition + 2] != 0|| board[YPosition + 2, XPosition + 1] != 0)
+                        if (XPosition == 8 || board[YPosition, XPosition + 1] != 0 || board[YPosition + 1, XPosition + 2] != 0|| board[YPosition + 2, XPosition + 2] != 0)
                             return false;
                         break;
                 }
@@ -103,11 +103,11 @@ namespace ProjectTet
 
             switch(RotationValue) {
                 case 1:
-                    if (board[YPosition + 1, XPosition] != 0 || board[YPosition + 2, XPosition + 1] != 0 || board[YPosition + 2, XPosition + 2] != 0)
+                    if (board[YPosition + 2, XPosition] != 0 || board[YPosition + 2, XPosition + 1] != 0 || board[YPosition + 1, XPosition + 2] != 0)
                         return true;
                     break;
                 case 2:
-                    if (board[YPosition + 3, XPosition] != 0 || board[YPosition + 2, XPosition + 1] != 0)
+                    if (board[YPosition + 2, XPosition] != 0 || board[YPosition + 3, XPosition + 1] != 0)
                         return true;
                     break;
             }
@@ -128,11 +128,11 @@ namespace ProjectTet
 
             if(RotationValue == 1) {
                 _Shape =
-                    new int[, ]{{1, 1, 0, 0}, {0, 1, 1, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
+                    new int[, ]{{0, 1, 1, 0}, {1, 1, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
             }
             else {
                 _Shape =
-                    new int[, ]{{0, 1, 0, 0}, {1, 1, 0, 0}, {1, 0, 0, 0}, {0, 0, 0, 0}};
+                    new int[, ]{{1, 0, 0, 0}, {1, 1, 0, 0}, {0, 1, 0, 0}, {0, 0, 0, 0}};
             }
         }
     }
