@@ -38,6 +38,7 @@ partial class Form1 {
             this.linesBox = new System.Windows.Forms.TextBox();
             this.playButton = new System.Windows.Forms.Button();
             this.InstructionLabel = new System.Windows.Forms.Label();
+            this.GameOverLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gameBoard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.holdBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nextBox)).BeginInit();
@@ -184,11 +185,22 @@ partial class Form1 {
             this.InstructionLabel.Text = "a = move left\r\ns = soft drop\r\nd = move right\r\n\r\nleft arrow = \r\nrotate left\r\n\r\nrig" +
     "ht arrow = \r\nrotate right\r\n";
             // 
+            // GameOverLabel
+            // 
+            this.GameOverLabel.AutoSize = true;
+            this.GameOverLabel.Location = new System.Drawing.Point(217, 149);
+            this.GameOverLabel.Name = "GameOverLabel";
+            this.GameOverLabel.Size = new System.Drawing.Size(110, 20);
+            this.GameOverLabel.TabIndex = 16;
+            this.GameOverLabel.Text = "GAME OVER";
+            this.GameOverLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 644);
+            this.Controls.Add(this.GameOverLabel);
             this.Controls.Add(this.InstructionLabel);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.linesBox);
@@ -228,5 +240,6 @@ partial class Form1 {
   private System.Windows.Forms.TextBox linesBox;
   private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Label InstructionLabel;
+        private System.Windows.Forms.Label GameOverLabel;
     }
 }
